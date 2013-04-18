@@ -142,8 +142,7 @@ Date.prototype.format = function (mask, utc) {
     var setSelection = function(wrapper, name) {
         if (wrapper) {
             var format = wrapper.find('select').data('format').replace(/"/g, '');
-            var now = new Date();
-            setValue(wrapper, now.format(format));
+            setValue(wrapper, (new Date()).format(format));
         }
         return wrapper;
     };
@@ -199,12 +198,12 @@ Date.prototype.format = function (mask, utc) {
              */
             nowButton.click(function(event) {
                 event.preventDefault();
-                setSelection(yearWrapper, 'year').find('select').trigger('change');
-                setSelection(monthWrapper, 'month').find('select').trigger('change');
-                setSelection(dayWrapper, 'day').find('select').trigger('change');
-                setSelection(hourWrapper, 'hour').find('select').trigger('change');
-                setSelection(minuteWrapper, 'minute').find('select').trigger('change');
-                monthWrapper.find('select').trigger('change');
+                setSelection(yearWrapper, 'year').find('select').trigger('click');
+                setSelection(monthWrapper, 'month').find('select').trigger('click');
+                setSelection(dayWrapper, 'day').find('select').trigger('click');
+                setSelection(hourWrapper, 'hour').find('select').trigger('click');
+                setSelection(minuteWrapper, 'minute').find('select').trigger('click');
+                monthWrapper.find('select').trigger('click');
             });
 
             /**
