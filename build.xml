@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="Faceleg UI Date Time Select" default="build">
+    <target name="build">
+        <mkdir dir="${phing.dir.faceleg_ui_date_time_select}/packages" />
+        <phingcall target="css" />
+        <phingcall target="cssdev" />
+        <phingcall target="js" />
+        <phingcall target="jsdev" />
+    </target>
+
+    <adhoc-task name="scss">
+        require_once 'vendor/pan/theme/classes/ScssTask.php';
+    </adhoc-task>
+
+    <target name="css" description="Compile and compress all CSS files">
+        <scss
+            scssFile="date-time-select.scss"
+            cssFile="${phing.dir.faceleg_ui_date_time_select}/packages/date-time-select.min.css"
+            dir="${phing.dir.faceleg_ui_date_time_select}/src"
+            compress="true"
+        />
+    </target>
+
+    <target name="cssdev" description="Compile all CSS files">
+        <scss
+            scssFile="date-time-select.scss"
+            cssFile="${phing.dir.faceleg_ui_date_time_select}/packages/date-time-select.css"
+            dir="${phing.dir.faceleg_ui_date_time_select}/src"
+        />
+    </target>
+
+    <target name="js" description="Compile and compress all JS">
+        <exec dir="${phing.dir.faceleg_ui_date_time_select}" level="info" logoutput="true" command="
+            closure
+                --js src/date.format.js
+                --js src/date-time-select.js
+                --js_output_file packages/date-time-select.min.js
+        " />
+    </target>
+
+    <target name="jsdev" description="Compile all JS files">
+        <exec dir="${phing.dir.faceleg_ui_date_time_select}" level="info" logoutput="true" command="
+            cat
+                src/date.format.js
+                src/date-time-select.js
+            > packages/date-time-select.js
+        " />
+    </target>
+</project>
+
+
