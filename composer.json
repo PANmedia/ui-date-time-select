@@ -12,12 +12,7 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {
-    },
     "require-dev": {
-        "pan/theme": "dev-master",
-        "phing/phing": "dev-master"
-    },
-    "autoload": {
+        "pan/theme": "dev-master"
     }
 }
